@@ -1,0 +1,5 @@
+{
+  "name": "BizFlow Manager",
+  "description": "A comprehensive multi-user local business management platform for tracking inventory, sales, customers, and expenses with real-time reporting.",
+  "requestFramePermissions": []
+}
