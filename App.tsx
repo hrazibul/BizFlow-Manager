@@ -27,7 +27,6 @@ const App: React.FC = () => {
   const [expenses, setExpenses] = useState<Expense[]>([]);
   const [suppliers, setSuppliers] = useState<Supplier[]>([]);
 
-  // ডাটা লোড করার কমন ফাংশন
   const loadInitialData = (currentUser: UserType) => {
     if (currentUser.id === 'guest') {
       const loadLocal = (key: string, setter: any) => {
@@ -127,7 +126,6 @@ const App: React.FC = () => {
     }
     setUser(null);
     setCurrentPage(Page.Login);
-    // ডাটা ক্লিয়ার
     setInventory([]); setSales([]); setCustomers([]); setExpenses([]); setSuppliers([]);
   };
 
@@ -135,7 +133,7 @@ const App: React.FC = () => {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center space-y-4 bg-slate-50">
         <Loader2 className="animate-spin text-indigo-600" size={48} />
-        <p className="text-slate-500 font-bold">বিজফ্লো লোড হচ্ছে...</p>
+        <p className="text-slate-500 font-bold text-lg">বিজফ্লো প্রস্তুত হচ্ছে...</p>
       </div>
     );
   }
@@ -182,7 +180,7 @@ const App: React.FC = () => {
           />
         </>
       )}
-      <main className="flex-1 overflow-auto">
+      <main className="flex-1 overflow-auto relative">
         {user && (
           <header className="hidden md:flex items-center justify-between px-8 py-4 bg-white border-b sticky top-0 z-30">
             <div className="flex items-center space-x-4">
@@ -201,7 +199,7 @@ const App: React.FC = () => {
             </div>
           </header>
         )}
-        <div className={user ? "p-4 md:p-8" : ""}>{renderPage()}</div>
+        <div className={user ? "p-4 md:p-8" : "min-h-screen"}>{renderPage()}</div>
       </main>
       {user && <Chatbot businessData={{ inventory, sales, customers, expenses, suppliers, businessName: user.businessName }} />}
     </div>
