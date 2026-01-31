@@ -5,9 +5,8 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   define: {
-    // এটি নিশ্চিত করে যে কোডের ভেতর process.env.API_KEY পাওয়া যাবে
+    // শুধুমাত্র প্রয়োজনীয় ভ্যারিয়েবলগুলো পাস করা হচ্ছে যাতে বিল্ড এরর না হয়
     'process.env.API_KEY': JSON.stringify(process.env.API_KEY),
-    'process.env': process.env
   },
   server: {
     port: 3000
