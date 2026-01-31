@@ -5,11 +5,17 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   define: {
-    // ভারসেলে process.env সাপোর্ট করার জন্য
-    'process.env.API_KEY': JSON.stringify(process.env.API_KEY)
+    // এটি নিশ্চিত করে যে কোডের ভেতর process.env.API_KEY পাওয়া যাবে
+    'process.env.API_KEY': JSON.stringify(process.env.API_KEY),
+    'process.env': process.env
+  },
+  server: {
+    port: 3000
   },
   build: {
     outDir: 'dist',
-    sourcemap: false
+    commonjsOptions: {
+      transformMixedEsModules: true
+    }
   }
 });
